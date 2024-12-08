@@ -4,6 +4,7 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { Toaster } from "@/components/ui/ui/toaster";
 export default function RootLayout({
   children,
 }: {
@@ -26,6 +27,7 @@ export default function RootLayout({
             <UserButton />
           </SignedIn> */}
             {children}
+            <Toaster/>
           </ThemeProvider>
         </body>
       </html>

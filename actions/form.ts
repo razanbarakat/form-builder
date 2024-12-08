@@ -2,6 +2,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import prisma from "../lib/prisma";
 import { redirect } from "next/navigation"; // دالة التوجيه
+import { formSchemaType } from "@/schemas/form";
 
 class UserNotFoundErr extends Error {
   constructor() {
@@ -45,4 +46,9 @@ export async function GetFormStats() {
     submissions,
     bounceRate,
   };
+}
+
+export async function CreateForm(data:formSchemaType) {
+  console.log("Name on server", data.name)
+  
 }
