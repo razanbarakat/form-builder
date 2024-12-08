@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/ui/dialog";
-import { BsFileEarmark } from "react-icons/bs";
+import { BsFileEarmarkPlus } from "react-icons/bs";
 import { ImSpinner2 } from "react-icons/im";
 import { Button } from "./ui/ui/button";
 import {
@@ -27,7 +27,6 @@ import { useForm } from "react-hook-form";
 import { Textarea } from "./ui/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { formSchema, formSchemaType } from "@/schemas/form";
-import { AwardIcon } from "lucide-react";
 import { CreateForm } from "@/actions/form";
 
 export default function CreateFormBtn() {
@@ -36,11 +35,12 @@ export default function CreateFormBtn() {
   });
   async function onSubmit(values: formSchemaType) {
     try {
-      await CreateForm(values);
+      const formId = await CreateForm(values);
       toast({
         title: "Success",
         description: "Form created successfully",
       });
+      console.log("form id", formId);
     } catch (error) {
       toast({
         title: "error",
@@ -49,11 +49,19 @@ export default function CreateFormBtn() {
       });
     }
   }
-
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Creat new Form</Button>
+        <Button
+          variant={"outline"}
+          className="group border border-primary/20 h-[190px] items-center justify-center flex flex-col hover:border-primary hover:cursor-pointer border-dashed gap-4 "
+        >
+          <BsFileEarmarkPlus className="h-8 w-8 text-muted-foreground group-hover:text-primary" />
+          <p className="font-blod text-xl text-muted-foreground group-hover:text-primary">
+            {" "}
+            Creat new Form
+          </p>
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -101,9 +109,9 @@ export default function CreateFormBtn() {
             className="w-full mt-4"
           >
             {!form.formState.isSubmitting && <span>Save</span>}
-            {!form.formState.isSubmitting && (
+            {/* {!form.formState.isSubmitting && (
               <ImSpinner2 className="animate-spin" />
-            )}
+            )} */}
           </Button>
         </DialogFooter>
       </DialogContent>
