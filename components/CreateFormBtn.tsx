@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/ui/dialog";
 import { BsFileEarmarkPlus } from "react-icons/bs";
-import { ImSpinner2 } from "react-icons/im";
+// import { ImSpinner2 } from "react-icons/im";
 import { Button } from "./ui/ui/button";
 import {
   Form,
@@ -42,6 +42,7 @@ export default function CreateFormBtn() {
       });
       console.log("form id", formId);
     } catch (error) {
+      console.log(error);
       toast({
         title: "error",
         description: "Somthing went wrong ,Please try again later",
