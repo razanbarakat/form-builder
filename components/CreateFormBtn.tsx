@@ -28,8 +28,12 @@ import { Textarea } from "./ui/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { formSchema, formSchemaType } from "@/schemas/form";
 import { CreateForm } from "@/actions/form";
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useRouter } from "next/navigation";
 
 export default function CreateFormBtn() {
+  const router = useRouter();
+
   const form = useForm<formSchemaType>({
     resolver: zodResolver(formSchema),
   });
@@ -40,7 +44,7 @@ export default function CreateFormBtn() {
         title: "Success",
         description: "Form created successfully",
       });
-      console.log("form id", formId);
+      router.push(`/builder/${formId}`);
     } catch (error) {
       console.log(error);
       toast({

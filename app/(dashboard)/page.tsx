@@ -5,12 +5,13 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/ui/card";
 
 import { Skeleton } from "@/components/ui/ui/skeleton";
-import { FaWpforms } from "react-icons/fa";
+import { FaEdit, FaWpforms } from "react-icons/fa";
 import { HiCursorClick } from "react-icons/hi";
 import { TbArrowBounce } from "react-icons/tb";
 
@@ -19,6 +20,9 @@ import CreateFormBtn from "@/components/CreateFormBtn";
 import { Form } from "@prisma/client";
 import { Badge } from "@/components/ui/ui/badge";
 import { formatDistance } from "date-fns";
+import Link from "next/link";
+import { BiRightArrowAlt } from "react-icons/bi";
+import { Button } from "@/components/ui/ui/button";
 
 export default function Home() {
   return (
@@ -171,10 +175,27 @@ function FormCard({ form }: { form: Form }) {
           )}
         </CardDescription>
       </CardHeader>
-
-      {/* <CardFooter>
-    <p>Card Footer</p>
-  </CardFooter> */}
+      <CardContent className="h-[20px] truncate text-sm text-muted-foreground">
+        {form.description || "No description provided."}
+      </CardContent>
+      <CardFooter>
+        {form.published && (
+          <Button asChild className="w-full mt-2 text-md gap-4">
+            <Link href={`/forms/${form.id}`}>
+              View submissions
+              <BiRightArrowAlt />
+            </Link>
+          </Button>
+        )}
+        {!form.published && (
+          <Button asChild variant={"secondary"} className="w-full mt-2 text-md gap-4">
+            <Link href={`/builder/${form.id}`}>
+              Edit form
+              <FaEdit />
+            </Link>
+          </Button>
+        )}
+      </CardFooter>
     </Card>
   );
 }
