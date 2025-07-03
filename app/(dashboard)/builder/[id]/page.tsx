@@ -1,4 +1,5 @@
 import { GetFormById } from "@/actions/form";
+import FormBuilder from "@/components/FormBuilder";
 import React from "react";
 
 export default async function BuilderPage({
@@ -13,5 +14,5 @@ export default async function BuilderPage({
     throw new Error("Form not found");
   }
 
-  return <div>{form.name}</div>;
+  return <FormBuilder form={form} />;
 }
