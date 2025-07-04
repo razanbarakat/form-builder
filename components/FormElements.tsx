@@ -19,7 +19,6 @@ designerBtnElement:{
     propertiesComponent: React.FC;
 };
 
-
 export type FormElementIstance={
     id: string;
     type: ElementsType;
@@ -30,6 +29,6 @@ export type FormElementIstance={
 type FormElementsType={
     [key in ElementsType]: FormElement;
 };
-export const FormElement: FormElementsType={
+export const FormElements: FormElementsType={
     TextField:TextFieldElement,
 }

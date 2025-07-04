@@ -5,7 +5,7 @@ import PreviewDialogBtn from "./PreviewDialogBtn";
 import SaveFormBtn from "./SaveFormBtn";
 import PublishFormBtn from "./PublishFormBtn";
 import Designer from "./Designer";
-import { DndContext, DragOverlay } from "@dnd-kit/core";
+import { DndContext} from "@dnd-kit/core";
 import DragOverlayWrapper from "./DragOverlayWrapper";
 export default function FormBuilder({ form }: { form: Form }) {
   return (
