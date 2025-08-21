@@ -5,7 +5,7 @@ export type ElementsType="TextField";
 export type FormElement={
     type: ElementsType;
 
-construct:(Id:string)=>FormElementIstance;
+construct:(Id:string)=>FormElementInstance;
 
 
 designerBtnElement:{
@@ -19,7 +19,7 @@ designerBtnElement:{
     propertiesComponent: React.FC;
 };
 
-export type FormElementIstance={
+export type FormElementInstance={
     id: string;
     type: ElementsType;
     extraAttributes?: Record<string, any>;

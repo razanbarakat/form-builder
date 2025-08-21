@@ -1,18 +1,27 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import { DynamicThemeProvider } from "./providers";
 import { Toaster } from "@/components/ui/ui/toaster";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import DesignerContextProvider from "@/components/context/DesignerContext";
+import { Inter } from "next/font/google";
 
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
+  title: "Creat Next App",
+  description: "Genareate by create next app",
+};
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
+      <ClerkProvider>
     <html lang="en">
-      <body>
-        <ClerkProvider>
-          <DynamicThemeProvider
+      <body className={inter.className}>
+      <DesignerContextProvider>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
@@ -20,9 +29,10 @@ export default function RootLayout({
           >
             {children}
             <Toaster />
-          </DynamicThemeProvider>
-        </ClerkProvider>
+          </ThemeProvider>
+       </DesignerContextProvider>
       </body>
     </html>
+     </ClerkProvider>
   );
 }
